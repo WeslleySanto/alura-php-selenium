@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  app-serve:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: php
+    restart: always
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - DB_CONNECTION=sqlite
+      - APP_URL=localhost:80
+    ports:
+      - 80:80
+      - 8080:8080
+    volumes:
+      - /home/sistemas/PHP e Selenium - Testes de ponta a ponta/.docker/apache/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - /home/sistemas/PHP e Selenium - Testes de ponta a ponta/projeto-web:/var/www/html
